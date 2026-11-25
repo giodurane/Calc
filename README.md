@@ -7,7 +7,7 @@
 
 Aplicación web progresiva (**PWA**) ligera, rápida y sin dependencias para sumar, restar y convertir bloques de tiempo en formato **sexagesimal (`HH:MM`)** y **decimal (`0.00 h`)** en tiempo real.
 
-👉 **Demo en vivo:** [https://giodurane.github.io/Calc/](https://giodurane.github.io/Calc/)
+👉 **Para utilizarla:** [https://giodurane.github.io/Calc/](https://giodurane.github.io/Calc/)
 
 ---
 
