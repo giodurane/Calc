@@ -596,3 +596,10 @@ applyTheme(getCurrentTheme(), false);
 updateRangePreview();
 renderAll();
 bindEvents();
+
+// Register Service Worker for offline PWA installation
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
