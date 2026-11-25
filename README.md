@@ -110,6 +110,12 @@ python3 -m http.server 8080
 
 ---
 
+## Privacidad
+
+Los cálculos y bloques registrados se guardan exclusivamente en tu navegador (`localStorage`) y nunca se envían a ningún servidor. La versión publicada en GitHub Pages utiliza únicamente [GoatCounter](https://www.goatcounter.com/) para estadísticas agregadas de visitas, sin cookies ni rastreo de datos personales.
+
+---
+
 ## Autoría y Licencia
 
 Desarrollado por **Giovanny Duran** ([@giodurane](https://github.com/giodurane)).
