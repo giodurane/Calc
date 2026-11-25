@@ -339,13 +339,12 @@ input:focus-visible {
 .workspace {
   width: 100%;
   max-width: 1020px;
-  margin: auto;
+  margin: 0 auto auto;
   padding: 10px 20px 20px;
   display: grid;
   grid-template-columns: minmax(340px, 430px) minmax(360px, 1fr);
   gap: 22px;
-  align-items: stretch;
-  flex: 1;
+  align-items: start;
 }
 
 /* =========================================================
