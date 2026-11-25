@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const CACHE_NAME = 'calc-pwa-v1';
+const CACHE_NAME = 'calc-pwa-v2';
 
 const APP_ASSETS = [
   './',
