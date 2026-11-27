@@ -194,7 +194,7 @@ function renderAll() {
   els.displayEquivLabel.textContent = state.equivLabel;
   els.displayEquivValue.textContent = state.equivValue;
 
-  els.displayTotalValue.textContent = totals.balanceSexagesimal;
+  els.displayTotalValue.textContent = isSex ? totals.balanceSexagesimal : totals.balanceDecimal;
   els.displayTotalValue.classList.toggle('is-negative', totals.balanceMinutes < 0);
 
   // Keypad dynamic state
@@ -204,18 +204,21 @@ function renderAll() {
   els.keySub.classList.toggle('is-active', state.pendingSign < 0);
   els.keyAdd.classList.remove('is-active');
 
-  // Summary cards
-  els.sumadoHhmm.textContent = totals.sumadoSexagesimal;
-  els.sumadoDec.textContent = totals.sumadoDecimal;
-  els.restadoHhmm.textContent = totals.restadoSexagesimal;
-  els.restadoDec.textContent = totals.restadoDecimal;
-  els.balanceHhmm.textContent = totals.balanceSexagesimal;
+  // Summary cards (adapt primary/secondary to active mode)
+  els.sumadoHhmm.textContent = isSex ? totals.sumadoSexagesimal : totals.sumadoDecimal;
+  els.sumadoDec.textContent = isSex ? totals.sumadoDecimal : totals.sumadoSexagesimal;
+  els.restadoHhmm.textContent = isSex ? totals.restadoSexagesimal : totals.restadoDecimal;
+  els.restadoDec.textContent = isSex ? totals.restadoDecimal : totals.restadoSexagesimal;
+  els.balanceHhmm.textContent = isSex ? totals.balanceSexagesimal : totals.balanceDecimal;
   els.balanceHhmm.classList.toggle('is-negative', totals.balanceMinutes < 0);
-  els.balanceDec.textContent = totals.balanceDecimal;
+  els.balanceDec.textContent = isSex ? totals.balanceDecimal : totals.balanceSexagesimal;
 
   // Footer total
-  els.footerTotalHhmm.textContent = totals.balanceSexagesimal;
-  els.footerTotalDec.textContent = totals.balanceDecimal;
+  els.footerTotalHhmm.textContent = isSex ? totals.balanceSexagesimal : totals.balanceDecimal;
+  els.footerTotalDec.textContent = isSex ? totals.balanceDecimal : totals.balanceSexagesimal;
+
+  // Range preview adapts to active mode
+  updateRangePreview();
 
   // Counts
   const count = calc.blocks.length;
@@ -256,15 +259,18 @@ function renderAll() {
     const values = document.createElement('div');
     values.className = 'block-values';
 
-    const hhmm = document.createElement('span');
-    hhmm.className = 'block-hhmm';
-    hhmm.textContent = formatMinutesToSexagesimal(block.minutes);
+    const sexStr = formatMinutesToSexagesimal(block.minutes);
+    const decStr = `${formatMinutesToDecimal(block.minutes, true)} h`;
 
-    const dec = document.createElement('span');
-    dec.className = 'block-dec';
-    dec.textContent = `${formatMinutesToDecimal(block.minutes, true)} h`;
+    const primaryVal = document.createElement('span');
+    primaryVal.className = 'block-hhmm';
+    primaryVal.textContent = isSex ? sexStr : decStr;
 
-    values.append(hhmm, dec);
+    const secondaryVal = document.createElement('span');
+    secondaryVal.className = 'block-dec';
+    secondaryVal.textContent = isSex ? decStr : sexStr;
+
+    values.append(primaryVal, secondaryVal);
     info.appendChild(values);
 
     if (block.label) {
@@ -306,13 +312,18 @@ function renderAll() {
 }
 
 function updateRangePreview() {
+  const isSex = calc.mode === MODES.SEXAGESIMAL;
   const res = calculateRangeMinutes(els.inputRangeStart.value, els.inputRangeEnd.value);
   if (!res) {
-    els.rangePreviewValue.textContent = '00:00 · 0.00 h';
+    els.rangePreviewValue.textContent = isSex ? '00:00 · 0.00 h' : '0.00 h · 00:00';
     return;
   }
   const suffix = res.overnight ? ' (+1 día)' : '';
-  els.rangePreviewValue.textContent = `${formatMinutesToSexagesimal(res.minutes)} · ${formatMinutesToDecimal(res.minutes, true)} h${suffix}`;
+  const sexStr = formatMinutesToSexagesimal(res.minutes);
+  const decStr = `${formatMinutesToDecimal(res.minutes, true)} h`;
+  els.rangePreviewValue.textContent = isSex
+    ? `${sexStr} · ${decStr}${suffix}`
+    : `${decStr} · ${sexStr}${suffix}`;
 }
 
 /* =========================================================

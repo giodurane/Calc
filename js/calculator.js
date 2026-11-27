@@ -500,7 +500,7 @@ export class TimeCalculator {
 
     const primary = isSex
       ? formatDigitBufferToSexagesimal(this.digitBuffer)
-      : this.decimalBuffer;
+      : (this.decimalBuffer === '0' ? '0.00' : this.decimalBuffer);
 
     const unit = isSex ? 'h:m' : 'h';
     const equivLabel = isSex ? 'EQUIV. DECIMAL' : 'EQUIV. HH:MM';
