@@ -1,6 +1,6 @@
 /*
  * Calc - Service Worker (Offline PWA support)
- * Copyright (C) 2026 Giovanny Duran
+ * Copyright (C) 2026 Giovanny Durán
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const CACHE_NAME = 'calc-pwa-v5';
+const CACHE_NAME = 'calc-pwa-v6';
 
 const APP_ASSETS = [
   './',

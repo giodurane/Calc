@@ -118,6 +118,6 @@ Los cálculos y bloques registrados se guardan exclusivamente en tu navegador (`
 
 ## Autoría y Licencia
 
-Desarrollado por **Giovanny Duran** ([@giodurane](https://github.com/giodurane)).
+Desarrollado por **Giovanny Durán** ([@giodurane](https://github.com/giodurane)).
 
 Este programa es software libre: puedes redistribuirlo y/o modificarlo bajo los términos de la **GNU General Public License v3.0 (GPL-3.0)** publicada por la Free Software Foundation. Consulta el archivo [LICENSE](./LICENSE) para más detalles.

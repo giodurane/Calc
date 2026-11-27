@@ -1,6 +1,6 @@
 /*
  * Calc - Tests unitarios para el motor de bloques sexagesimal y decimal
- * Copyright (C) 2026 Giovanny Duran
+ * Copyright (C) 2026 Giovanny Durán
  * Licensed under GNU GPL v3.0
  */
 
